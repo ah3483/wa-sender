@@ -261,7 +261,8 @@ async function send() {
     const d = await r.json();
     resp.textContent = 'API: ' + d.msg;
     const low = (d.msg || '').toLowerCase();
-    if (low.includes('sent') || low.includes('queued') || low.includes('success')) {
+    //if (low.includes('sent') || low.includes('queued') || low.includes('success')) {
+    if (!low.includes('error') && !low.includes('invalid') && !low.includes('fail') && !low.includes('wrong') && !low.includes('not connected')) {
       resp.className = 'resp ok'; toast('Gesendet an ' + displayName + '!', 'success');
       addHist(displayName, fullNumber, msg, 'ok', sender); document.getElementById('msg').value = '';
     } else { resp.className = 'resp err'; toast('Fehler: ' + d.msg, 'error'); addHist(displayName, fullNumber, msg, 'fail', sender); }
