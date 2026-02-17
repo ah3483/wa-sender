@@ -3,40 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WA Sender</title>
+<title>Paul WA Sender</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{--g:#25D366;--gd:#1a9e4a;--r:#ef4444;--bg:#060a08;--sf:#0c1310;--sf2:#111b16;--bd:#172620;--t:#e2f0e8;--td:#5a7d6a;--tl:#3d5c4c}
+:root{--g:#25D366;--gd:#1a9e4a;--r:#ef4444;--bg:#f4f6f5;--sf:#ffffff;--sf2:#f0f2f1;--bd:#e0e5e2;--t:#1a2e22;--td:#5a7066;--tl:#8a9e94;--shadow:0 2px 12px rgba(0,0,0,.06)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--t);min-height:100vh}
 
-/* Login */
 .login-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh}
-.login-card{background:var(--sf);border:1px solid var(--bd);border-radius:18px;padding:40px 30px;width:100%;max-width:380px;animation:up .6s ease-out;text-align:center}
+.login-card{background:var(--sf);border:1px solid var(--bd);border-radius:18px;padding:40px 30px;width:100%;max-width:380px;animation:up .6s ease-out;text-align:center;box-shadow:var(--shadow)}
 .login-card h2{font-size:18px;margin-bottom:6px}
 .login-card p{font-size:13px;color:var(--td);margin-bottom:24px}
 .code-input{text-align:center;font-family:'JetBrains Mono',monospace;font-size:28px;letter-spacing:12px;padding:16px}
 .login-error{color:var(--r);font-size:13px;margin-top:12px;display:none}
 
-/* Layout */
 .layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1100px;margin:0 auto;padding:30px 20px;min-height:100vh}
 @media(max-width:800px){.layout{grid-template-columns:1fr;max-width:520px}}
 .header{grid-column:1/-1;display:flex;align-items:center;gap:16px;margin-bottom:8px;animation:up .6s ease-out}
-.logo{width:48px;height:48px;background:linear-gradient(135deg,var(--g),var(--gd));border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.25)}
+.logo{width:48px;height:48px;background:linear-gradient(135deg,var(--g),var(--gd));border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.2)}
 .logo svg{width:26px;height:26px;fill:#fff}
 .header h1{font-size:20px;font-weight:700}
 .header p{font-size:13px;color:var(--td);margin-top:2px}
+.header-actions{display:flex;gap:8px}
 .logout{background:none;border:1px solid var(--bd);border-radius:8px;padding:6px 14px;font-size:12px;color:var(--td);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif}
 .logout:hover{border-color:var(--r);color:var(--r)}
 
-.card{background:var(--sf);border:1px solid var(--bd);border-radius:18px;padding:26px;animation:up .6s ease-out}
+.card{background:var(--sf);border:1px solid var(--bd);border-radius:18px;padding:26px;animation:up .6s ease-out;box-shadow:var(--shadow)}
 @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .sec{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--tl);margin-bottom:20px}
 
 .field{margin-bottom:16px}
 label{display:block;font-size:13px;color:var(--td);margin-bottom:6px}
 input,textarea,select{width:100%;background:var(--bg);border:1.5px solid var(--bd);border-radius:10px;padding:12px 14px;font-family:'Outfit',sans-serif;font-size:15px;color:var(--t);outline:none;transition:border .2s}
-input:focus,textarea:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(37,211,102,.1)}
+input:focus,textarea:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(37,211,102,.12)}
 textarea{resize:vertical;min-height:200px;line-height:1.6}
 select{cursor:pointer;appearance:none}
 input::placeholder,textarea::placeholder{color:var(--tl)}
@@ -44,8 +43,8 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
 .row select{width:100px;flex-shrink:0}
 .row input{flex:1}
 
-.btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--g),var(--gd));border:none;border-radius:10px;color:#fff;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;box-shadow:0 4px 16px rgba(37,211,102,.25);position:relative}
-.btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 24px rgba(37,211,102,.35)}
+.btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--g),var(--gd));border:none;border-radius:10px;color:#fff;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;box-shadow:0 4px 16px rgba(37,211,102,.2);position:relative}
+.btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 24px rgba(37,211,102,.3)}
 .btn:disabled{opacity:.5;cursor:wait}
 .btn svg{width:18px;height:18px;fill:#fff}
 .btn.loading .txt{opacity:0}
@@ -55,9 +54,9 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
 
 .contacts{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
 .contact{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg);border:1px solid var(--bd);border-radius:12px;cursor:pointer;transition:all .2s}
-.contact:hover,.contact.active{border-color:var(--g);background:rgba(37,211,102,.04)}
-.contact.active{box-shadow:0 0 0 2px rgba(37,211,102,.15)}
-.contact-avatar{width:40px;height:40px;border-radius:10px;background:var(--sf2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:var(--g);flex-shrink:0}
+.contact:hover,.contact.active{border-color:var(--g);background:rgba(37,211,102,.06)}
+.contact.active{box-shadow:0 0 0 2px rgba(37,211,102,.18)}
+.contact-avatar{width:40px;height:40px;border-radius:10px;background:rgba(37,211,102,.1);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:var(--gd);flex-shrink:0}
 .contact-info{flex:1}
 .contact-name{font-size:14px;font-weight:600}
 .contact-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--td);margin-top:2px}
@@ -65,35 +64,41 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
 .contact.active .contact-check{border-color:var(--g);background:var(--g);color:#fff;font-size:12px}
 .or-divider{text-align:center;color:var(--tl);font-size:11px;margin:12px 0;font-family:'JetBrains Mono',monospace}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
-.chip{padding:5px 11px;background:var(--sf2);border:1px solid var(--bd);border-radius:7px;font-size:12px;color:var(--td);cursor:pointer;transition:all .2s}
-.chip:hover{border-color:var(--g);color:var(--g)}
+.chip{padding:5px 11px;background:var(--bg);border:1px solid var(--bd);border-radius:7px;font-size:12px;color:var(--td);cursor:pointer;transition:all .2s}
+.chip:hover{border-color:var(--g);color:var(--gd);background:rgba(37,211,102,.06)}
 
 .resp{margin-top:12px;padding:10px 14px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12px;display:none}
-.resp.ok{display:block;background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2);color:var(--g)}
-.resp.err{display:block;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);color:var(--r)}
+.resp.ok{display:block;background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.25);color:var(--gd)}
+.resp.err{display:block;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);color:var(--r)}
 
 .hist-panel{display:flex;flex-direction:column;max-height:calc(100vh - 120px)}
 .hist-scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-right:4px}
 .hist-scroll::-webkit-scrollbar{width:4px}
 .hist-scroll::-webkit-scrollbar-thumb{background:var(--bd);border-radius:2px}
-.msg-card{padding:14px 16px;background:var(--bg);border:1px solid var(--bd);border-radius:12px;animation:up .3s ease-out}
+
+.msg-card{padding:14px 16px;background:var(--bg);border:1px solid var(--bd);border-radius:12px;animation:up .3s ease-out;position:relative;transition:all .2s}
+.msg-card:hover{border-color:#cdd5d0}
+.msg-card:hover .msg-delete{opacity:1}
 .msg-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.msg-to{font-size:13px;font-weight:600;color:var(--g)}
+.msg-to{font-size:13px;font-weight:600;color:var(--gd)}
 .msg-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--tl)}
 .msg-text{font-size:13px;color:var(--t);line-height:1.5;margin-bottom:8px;word-break:break-word}
 .msg-footer{display:flex;align-items:center;justify-content:space-between}
 .msg-status{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 8px;border-radius:4px}
-.msg-status.ok{background:rgba(37,211,102,.1);color:var(--g)}
-.msg-status.fail{background:rgba(239,68,68,.1);color:var(--r)}
+.msg-status.ok{background:rgba(37,211,102,.1);color:var(--gd)}
+.msg-status.fail{background:rgba(239,68,68,.08);color:var(--r)}
 .msg-from{font-size:11px;color:var(--td);font-style:italic}
 .empty-hist{text-align:center;padding:40px 20px;color:var(--tl);font-size:13px}
 
+.msg-delete{position:absolute;top:10px;right:10px;background:var(--sf);border:1px solid rgba(239,68,68,.2);border-radius:6px;padding:3px 8px;font-size:11px;color:var(--r);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;opacity:0}
+.msg-delete:hover{background:rgba(239,68,68,.06);border-color:var(--r)}
+
 .sender-bar{display:flex;align-items:center;gap:8px;margin-bottom:20px;padding:10px 14px;background:var(--bg);border:1px solid var(--bd);border-radius:10px}
 .sender-bar label{margin:0;font-size:12px;white-space:nowrap}
-.sender-bar input{border:none;background:none;padding:0;font-size:14px;font-weight:600;color:var(--g)}
+.sender-bar input{border:none;background:none;padding:0;font-size:14px;font-weight:600;color:var(--gd)}
 .sender-bar input:focus{box-shadow:none}
 
-.toast{position:fixed;bottom:24px;left:50%;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:500;z-index:99;transform:translateX(-50%) translateY(80px);opacity:0;transition:all .3s ease-out;box-shadow:0 6px 30px rgba(0,0,0,.4)}
+.toast{position:fixed;bottom:24px;left:50%;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:500;z-index:99;transform:translateX(-50%) translateY(80px);opacity:0;transition:all .3s ease-out;box-shadow:0 6px 30px rgba(0,0,0,.15)}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 .toast.success{background:var(--g);color:#fff}
 .toast.error{background:var(--r);color:#fff}
@@ -107,9 +112,9 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
 <div id="loginScreen" class="login-wrap">
   <div class="login-card">
     <div class="logo" style="margin:0 auto 20px"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
-    <h2>WA Sender</h2>
-    <p>Bitte 6-stelligen Code eingeben</p>
-    <input type="password" id="codeInput" class="code-input" maxlength="6" placeholder="······" autofocus>
+    <h2>Paul WA Sender</h2>
+    <p>Bitte 4-stelligen Code eingeben</p>
+    <input type="password" id="codeInput" class="code-input" maxlength="4" placeholder="····" autofocus>
     <div class="login-error" id="loginError"></div>
     <button class="btn" style="margin-top:20px" onclick="login()">
       <span class="txt">Anmelden</span><span class="spin"></span>
@@ -121,7 +126,7 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
 <div id="mainApp" class="layout hidden">
   <div class="header">
     <div class="logo"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
-    <div style="flex:1"><h1>WA Sender</h1><p>via TextMeBot</p></div>
+    <div style="flex:1"><h1>Paul WA Sender</h1><p>via TextMeBot</p></div>
     <button class="logout" onclick="logout()">Abmelden</button>
   </div>
 
@@ -189,7 +194,7 @@ let hist = JSON.parse(localStorage.getItem('h2') || '[]');
 function login() {
   const code = document.getElementById('codeInput').value.trim();
   const err = document.getElementById('loginError');
-  if (code.length !== 6) { err.style.display = 'block'; err.textContent = 'Bitte 6 Stellen eingeben'; return; }
+  if (code.length !== 4) { err.style.display = 'block'; err.textContent = 'Bitte 4 Stellen eingeben'; return; }
   fetch('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ code }) })
     .then(r => r.json())
     .then(d => {
@@ -214,7 +219,6 @@ function showApp() {
 document.getElementById('codeInput').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
 if (sessionStorage.getItem('auth') === '1') showApp();
 
-// ── Sender name ──
 document.getElementById('senderName').oninput = function() { localStorage.setItem('sender', this.value); };
 
 // ── Contacts ──
@@ -265,6 +269,15 @@ async function send() {
   finally { btn.classList.remove('loading'); btn.disabled = false; }
 }
 
+// ── Delete ──
+function deleteMsg(idx) {
+  if (!confirm('Diese Nachricht löschen?')) return;
+  hist.splice(idx, 1);
+  localStorage.setItem('h2', JSON.stringify(hist));
+  renderHist();
+  toast('Gelöscht', 'success');
+}
+
 // ── History ──
 function addHist(name, to, msg, st, sender) {
   hist.unshift({ name, to, msg, st, sender, t: new Date().toISOString() });
@@ -276,11 +289,15 @@ function renderHist() {
   const scroll = document.getElementById('histScroll'), empty = document.getElementById('emptyHist');
   if (!hist.length) { scroll.innerHTML = ''; scroll.appendChild(empty); empty.style.display = 'block'; return; }
   empty.style.display = 'none';
-  scroll.innerHTML = hist.map(h => {
+  scroll.innerHTML = hist.map((h, idx) => {
     const t = new Date(h.t);
     const ts = t.toLocaleTimeString('de', { hour: '2-digit', minute: '2-digit' });
     const ds = t.toLocaleDateString('de', { day: '2-digit', month: '2-digit', year: 'numeric' });
-    return '<div class="msg-card"><div class="msg-header"><div class="msg-to">→ ' + esc(h.name || h.to) + '</div><div class="msg-time">' + ds + ' · ' + ts + '</div></div><div class="msg-text">' + esc(h.msg) + '</div><div class="msg-footer"><span class="msg-status ' + (h.st === 'ok' ? 'ok' : 'fail') + '">' + (h.st === 'ok' ? '✓ Gesendet' : '✗ Fehler') + '</span><span class="msg-from">von ' + esc(h.sender || 'Unbekannt') + '</span></div></div>';
+    return '<div class="msg-card">' +
+      '<button class="msg-delete" onclick="deleteMsg(' + idx + ')">✕</button>' +
+      '<div class="msg-header"><div class="msg-to">→ ' + esc(h.name || h.to) + '</div><div class="msg-time">' + ds + ' · ' + ts + '</div></div>' +
+      '<div class="msg-text">' + esc(h.msg) + '</div>' +
+      '<div class="msg-footer"><span class="msg-status ' + (h.st === 'ok' ? 'ok' : 'fail') + '">' + (h.st === 'ok' ? '✓ Gesendet' : '✗ Fehler') + '</span><span class="msg-from">von ' + esc(h.sender || 'Unbekannt') + '</span></div></div>';
   }).join('');
 }
 

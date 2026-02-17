@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json());
 
-const LOGIN_CODE = process.env.LOGIN_CODE || "123123";
+const LOGIN_CODE = process.env.LOGIN_CODE || "1122";
 const TEXTMEBOT_KEY = process.env.TEXTMEBOT_KEY || "tsczjwP7zTnN";
 
 app.post("/api/login", (req, res) => {
