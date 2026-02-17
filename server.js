@@ -5,34 +5,31 @@ const app = express();
 
 app.use(express.json());
 
-// index.html direkt aus dem Hauptordner
+const LOGIN_CODE = process.env.LOGIN_CODE || "123123";
+const TEXTMEBOT_KEY = process.env.TEXTMEBOT_KEY || "tsczjwP7zTnN";
+
+app.post("/api/login", (req, res) => {
+  const { code } = req.body;
+  res.json({ ok: code === LOGIN_CODE });
+});
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Proxy für TextMeBot API
 app.get("/api/send", (req, res) => {
-  const { recipient, apikey, text } = req.query;
+  const { recipient, text } = req.query;
+  if (!recipient || !text) return res.json({ ok: false, msg: "Parameter fehlen" });
 
-  if (!recipient || !apikey || !text) {
-    return res.json({ ok: false, msg: "Parameter fehlen" });
-  }
-
-  const params = new URLSearchParams({ recipient, apikey, text });
-  const url = "https://api.textmebot.com/send.php?" + params;
-
-  https.get(url, (r) => {
+  const params = new URLSearchParams({ recipient, apikey: TEXTMEBOT_KEY, text });
+  https.get("https://api.textmebot.com/send.php?" + params, (r) => {
     let body = "";
     r.on("data", (c) => (body += c));
     r.on("end", () => {
-      console.log("TextMeBot:", body.trim());
+      console.log("→", recipient, ":", body.trim());
       res.json({ ok: true, msg: body.trim() });
     });
-  }).on("error", (e) => {
-    res.json({ ok: false, msg: e.message });
-  });
+  }).on("error", (e) => res.json({ ok: false, msg: e.message }));
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log("Server läuft!");
-});
+app.listen(process.env.PORT || 3000, () => console.log("Server läuft!"));
