@@ -1,14 +1,19 @@
 const express = require("express");
 const https = require("https");
+const path = require("path");
 const app = express();
 
 app.use(express.json());
-app.use(express.static("public"));
+
+// index.html direkt aus dem Hauptordner
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 
 // Proxy für TextMeBot API
 app.get("/api/send", (req, res) => {
   const { recipient, apikey, text } = req.query;
-  
+
   if (!recipient || !apikey || !text) {
     return res.json({ ok: false, msg: "Parameter fehlen" });
   }

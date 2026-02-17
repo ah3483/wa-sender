@@ -15,12 +15,9 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--t);min-hei
 .logo svg{width:26px;height:26px;fill:#fff}
 .header h1{font-size:20px;font-weight:700}
 .header p{font-size:13px;color:var(--td);margin-top:2px}
-
 .card{background:var(--sf);border:1px solid var(--bd);border-radius:18px;padding:26px;margin-bottom:16px;animation:up .6s ease-out}
 @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-
 .sec{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--tl);margin-bottom:20px}
-
 .field{margin-bottom:16px}
 label{display:block;font-size:13px;color:var(--td);margin-bottom:6px}
 input,textarea,select{width:100%;background:var(--bg);border:1.5px solid var(--bd);border-radius:10px;padding:12px 14px;font-family:'Outfit',sans-serif;font-size:15px;color:var(--t);outline:none;transition:border .2s}
@@ -28,15 +25,12 @@ input:focus,textarea:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(37,21
 textarea{resize:vertical;min-height:100px;line-height:1.6}
 select{cursor:pointer;appearance:none}
 input::placeholder,textarea::placeholder{color:var(--tl)}
-
 .row{display:flex;gap:8px}
 .row select{width:100px;flex-shrink:0}
 .row input{flex:1}
-
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
 .chip{padding:5px 11px;background:var(--sf2);border:1px solid var(--bd);border-radius:7px;font-size:12px;color:var(--td);cursor:pointer;transition:all .2s}
 .chip:hover{border-color:var(--g);color:var(--g)}
-
 .btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--g),var(--gd));border:none;border-radius:10px;color:#fff;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;box-shadow:0 4px 16px rgba(37,211,102,.25);position:relative}
 .btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 24px rgba(37,211,102,.35)}
 .btn:disabled{opacity:.5;cursor:wait}
@@ -45,11 +39,9 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
 .btn .spin{display:none;position:absolute;width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:sp .5s linear infinite}
 .btn.loading .spin{display:block}
 @keyframes sp{to{transform:rotate(360deg)}}
-
 .resp{margin-top:12px;padding:10px 14px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12px;display:none}
 .resp.ok{display:block;background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2);color:var(--g)}
 .resp.err{display:block;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);color:var(--r)}
-
 .hist{display:flex;flex-direction:column;gap:6px}
 .hi{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg);border:1px solid var(--bd);border-radius:10px}
 .hi-i{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
@@ -59,17 +51,14 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
 .hi-n{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600}
 .hi-m{font-size:12px;color:var(--td);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hi-t{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--tl)}
-
 .kd{display:flex;align-items:center;justify-content:space-between;background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:8px 14px;margin-bottom:16px}
 .kd span{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--td)}
 .kd button{background:none;border:1px solid var(--bd);border-radius:6px;padding:3px 10px;font-size:11px;color:var(--td);cursor:pointer}
 .kd button:hover{border-color:var(--g);color:var(--g)}
-
 .toast{position:fixed;bottom:24px;left:50%;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:500;z-index:99;transform:translateX(-50%) translateY(80px);opacity:0;transition:all .3s ease-out;box-shadow:0 6px 30px rgba(0,0,0,.4)}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 .toast.success{background:var(--g);color:#fff}
 .toast.error{background:var(--r);color:#fff}
-
 .hint{text-align:center;font-size:10px;color:var(--tl);margin-top:16px;opacity:.5}
 </style>
 </head>
@@ -80,7 +69,6 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
     <div><h1>WA Sender</h1><p>via TextMeBot</p></div>
   </div>
 
-  <!-- Setup -->
   <div class="card" id="setup">
     <div class="sec">Einrichtung</div>
     <div style="font-size:14px;color:var(--td);line-height:2;margin-bottom:12px">
@@ -94,176 +82,97 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
     </div>
   </div>
 
-  <!-- Sender -->
   <div class="card">
     <div class="sec">Nachricht senden</div>
     <div class="kd" id="keyBar" style="display:none">
       <span>Key: <span id="keyPrev"></span></span>
       <button onclick="changeKey()">Ändern</button>
     </div>
-
     <div class="field">
       <label>Nummer</label>
       <div class="row">
         <select id="cc">
-          <option value="+43">🇦🇹 +43</option>
-          <option value="+49">🇩🇪 +49</option>
-          <option value="+41">🇨🇭 +41</option>
-          <option value="+44">🇬🇧 +44</option>
-          <option value="+1">🇺🇸 +1</option>
-          <option value="+33">🇫🇷 +33</option>
-          <option value="+39">🇮🇹 +39</option>
-          <option value="+34">🇪🇸 +34</option>
-          <option value="+90">🇹🇷 +90</option>
-          <option value="+48">🇵🇱 +48</option>
+          <option value="+43">+43</option>
+          <option value="+49">+49</option>
+          <option value="+41">+41</option>
+          <option value="+44">+44</option>
+          <option value="+1">+1</option>
+          <option value="+33">+33</option>
+          <option value="+39">+39</option>
+          <option value="+34">+34</option>
+          <option value="+90">+90</option>
+          <option value="+48">+48</option>
         </select>
         <input type="tel" id="phone" placeholder="660 1234567">
       </div>
     </div>
-
     <div class="chips">
       <span class="chip" data-m="Hallo! Wie geht es dir?">Hallo</span>
       <span class="chip" data-m="Vielen Dank für Ihre Nachricht!">Danke</span>
       <span class="chip" data-m="Erinnerung: Unser Termin ist morgen.">Erinnerung</span>
       <span class="chip" data-m="Ihre Bestellung wurde versandt!">Versand</span>
     </div>
-
     <div class="field">
       <label>Nachricht</label>
       <textarea id="msg" placeholder="Nachricht eingeben..."></textarea>
     </div>
-
     <button class="btn" id="sendBtn" onclick="send()">
       <span class="txt" style="display:flex;align-items:center;gap:8px">
-        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-        Senden
-      </span>
-      <span class="spin"></span>
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>Senden
+      </span><span class="spin"></span>
     </button>
     <div class="resp" id="resp"></div>
   </div>
 
-  <!-- History -->
   <div class="card" id="histCard" style="display:none">
     <div class="sec">Verlauf</div>
     <div class="hist" id="hist"></div>
   </div>
-
   <p class="hint">Key wird nur lokal gespeichert · Strg+Enter zum Senden</p>
 </div>
 <div class="toast" id="toast"></div>
-
 <script>
-let key = localStorage.getItem('k')||'';
-let hist = JSON.parse(localStorage.getItem('h')||'[]');
-
+let key=localStorage.getItem('k')||'';
+let hist=JSON.parse(localStorage.getItem('h')||'[]');
 function init(){
-  if(key){
-    document.getElementById('setup').style.display='none';
-    document.getElementById('keyBar').style.display='flex';
-    document.getElementById('keyPrev').textContent=key.slice(0,6)+'···';
-    document.getElementById('phone').focus();
-  } else {
-    document.getElementById('setup').style.display='block';
-    document.getElementById('keyBar').style.display='none';
-    document.getElementById('keyIn').focus();
-  }
-  renderHist();
+  if(key){document.getElementById('setup').style.display='none';document.getElementById('keyBar').style.display='flex';document.getElementById('keyPrev').textContent=key.slice(0,6)+'···';document.getElementById('phone').focus()}
+  else{document.getElementById('setup').style.display='block';document.getElementById('keyBar').style.display='none';document.getElementById('keyIn').focus()}
+  renderHist()
 }
-
-function saveKey(){
-  const v=document.getElementById('keyIn').value.trim();
-  if(!v) return toast('Key eingeben','error');
-  key=v; localStorage.setItem('k',v); init(); toast('Key gespeichert!','success');
-}
-function changeKey(){
-  document.getElementById('setup').style.display='block';
-  document.getElementById('keyIn').value=key;
-  document.getElementById('keyIn').focus();
-}
-
-document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{
-  document.getElementById('msg').value=c.dataset.m;
-  document.getElementById('msg').focus();
-});
-
+function saveKey(){const v=document.getElementById('keyIn').value.trim();if(!v)return toast('Key eingeben','error');key=v;localStorage.setItem('k',v);init();toast('Gespeichert!','success')}
+function changeKey(){document.getElementById('setup').style.display='block';document.getElementById('keyIn').value=key;document.getElementById('keyIn').focus()}
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{document.getElementById('msg').value=c.dataset.m;document.getElementById('msg').focus()});
 async function send(){
-  if(!key) return toast('Erst Key eintragen','error');
-  const pre=document.getElementById('cc').value;
-  const ph=document.getElementById('phone').value.trim();
-  const msg=document.getElementById('msg').value.trim();
-  if(!ph) return toast('Nummer eingeben','error');
-  if(!msg) return toast('Nachricht eingeben','error');
-
-  let n=ph.replace(/[^0-9]/g,'');
-  if(n.startsWith('0')) n=n.slice(1);
-  const full=pre+n;
-
-  const btn=document.getElementById('sendBtn');
-  const resp=document.getElementById('resp');
-  btn.classList.add('loading'); btn.disabled=true;
-  resp.className='resp';
-
+  if(!key)return toast('Erst Key eintragen','error');
+  const pre=document.getElementById('cc').value,ph=document.getElementById('phone').value.trim(),msg=document.getElementById('msg').value.trim();
+  if(!ph)return toast('Nummer eingeben','error');
+  if(!msg)return toast('Nachricht eingeben','error');
+  let n=ph.replace(/[^0-9]/g,'');if(n.startsWith('0'))n=n.slice(1);
+  const full=pre+n,btn=document.getElementById('sendBtn'),resp=document.getElementById('resp');
+  btn.classList.add('loading');btn.disabled=true;resp.className='resp';
   try{
     const url='/api/send?recipient='+encodeURIComponent(full)+'&apikey='+encodeURIComponent(key)+'&text='+encodeURIComponent(msg);
-    const r=await fetch(url);
-    const d=await r.json();
-
+    const r=await fetch(url);const d=await r.json();
     resp.textContent='API: '+d.msg;
-    const low=d.msg.toLowerCase();
-
+    const low=(d.msg||'').toLowerCase();
     if(low.includes('sent')||low.includes('queued')||low.includes('success')){
-      resp.className='resp ok';
-      toast('Gesendet!','success');
-      addHist(full,msg,'ok');
-      document.getElementById('msg').value='';
-    } else {
-      resp.className='resp err';
-      toast('Fehler: '+d.msg,'error');
-      addHist(full,msg,'fail');
-    }
-  }catch(e){
-    resp.textContent='Verbindung fehlgeschlagen';
-    resp.className='resp err';
-    toast('Server-Fehler','error');
-    addHist(full,msg,'fail');
-  }finally{
-    btn.classList.remove('loading'); btn.disabled=false;
-  }
+      resp.className='resp ok';toast('Gesendet!','success');addHist(full,msg,'ok');document.getElementById('msg').value='';
+    }else{resp.className='resp err';toast('Fehler: '+d.msg,'error');addHist(full,msg,'fail')}
+  }catch(e){resp.textContent='Server-Fehler';resp.className='resp err';toast('Verbindung fehlgeschlagen','error');addHist(full,msg,'fail')}
+  finally{btn.classList.remove('loading');btn.disabled=false}
 }
-
-function addHist(to,msg,st){
-  hist.unshift({to,msg,st,t:new Date().toISOString()});
-  if(hist.length>20) hist=hist.slice(0,20);
-  localStorage.setItem('h',JSON.stringify(hist));
-  renderHist();
-}
-
+function addHist(to,msg,st){hist.unshift({to,msg,st,t:new Date().toISOString()});if(hist.length>20)hist=hist.slice(0,20);localStorage.setItem('h',JSON.stringify(hist));renderHist()}
 function renderHist(){
-  const c=document.getElementById('histCard');
-  const l=document.getElementById('hist');
-  if(!hist.length){c.style.display='none';return}
-  c.style.display='block';
-  l.innerHTML=hist.map(h=>{
-    const t=new Date(h.t);
-    const ts=t.toLocaleTimeString('de',{hour:'2-digit',minute:'2-digit'});
-    const ds=t.toLocaleDateString('de',{day:'2-digit',month:'2-digit'});
-    return '<div class="hi"><div class="hi-i '+(h.st==='ok'?'ok':'fail')+'">'+(h.st==='ok'?'✓':'✗')+'</div><div class="hi-d"><div class="hi-n">'+esc(h.to)+'</div><div class="hi-m">'+esc(h.msg)+'</div></div><div class="hi-t">'+ds+' '+ts+'</div></div>';
-  }).join('');
+  const c=document.getElementById('histCard'),l=document.getElementById('hist');
+  if(!hist.length){c.style.display='none';return}c.style.display='block';
+  l.innerHTML=hist.map(h=>{const t=new Date(h.t),ts=t.toLocaleTimeString('de',{hour:'2-digit',minute:'2-digit'}),ds=t.toLocaleDateString('de',{day:'2-digit',month:'2-digit'});
+  return'<div class="hi"><div class="hi-i '+(h.st==='ok'?'ok':'fail')+'">'+(h.st==='ok'?'✓':'✗')+'</div><div class="hi-d"><div class="hi-n">'+esc(h.to)+'</div><div class="hi-m">'+esc(h.msg)+'</div></div><div class="hi-t">'+ds+' '+ts+'</div></div>'}).join('')
 }
-
 function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
-
-function toast(m,ty){
-  const t=document.getElementById('toast');
-  t.textContent=m;t.className='toast '+ty+' show';
-  setTimeout(()=>t.classList.remove('show'),3000);
-}
-
+function toast(m,ty){const t=document.getElementById('toast');t.textContent=m;t.className='toast '+ty+' show';setTimeout(()=>t.classList.remove('show'),3000)}
 document.getElementById('phone').onkeydown=e=>{if(e.key==='Enter')document.getElementById('msg').focus()};
 document.getElementById('msg').onkeydown=e=>{if(e.key==='Enter'&&e.ctrlKey)send()};
 document.getElementById('keyIn').onkeydown=e=>{if(e.key==='Enter')saveKey()};
-
 init();
 </script>
 </body>
