@@ -30,12 +30,9 @@ app.get("/api/send", (req, res) => {
     r.on("end", () => {
       const trimmed = body.trim();
       console.log("TextMeBot [" + r.statusCode + "]:", trimmed);
-      
-      // Wenn HTTP 200 und keine klare Fehlermeldung -> Erfolg
       const low = trimmed.toLowerCase();
-      const isError = low.includes("error") || low.includes("invalid") || 
+      const isError = low.includes("error") || low.includes("invalid") ||
                       low.includes("not connected") || low.includes("wrong key");
-      
       res.json({ ok: !isError, msg: trimmed || "OK (leer)" });
     });
   });
@@ -45,7 +42,6 @@ app.get("/api/send", (req, res) => {
     res.json({ ok: false, msg: "Verbindung zu TextMeBot fehlgeschlagen: " + e.message });
   });
 
-  // Timeout nach 15 Sekunden
   request.setTimeout(15000, () => {
     request.destroy();
     res.json({ ok: true, msg: "Timeout - Nachricht wahrscheinlich gesendet" });
