@@ -9,14 +9,12 @@
 :root{--g:#25D366;--gd:#1a9e4a;--r:#ef4444;--bg:#f4f6f5;--sf:#ffffff;--sf2:#f0f2f1;--bd:#e0e5e2;--t:#1a2e22;--td:#5a7066;--tl:#8a9e94;--shadow:0 2px 12px rgba(0,0,0,.06)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--t);min-height:100vh}
-
 .login-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh}
 .login-card{background:var(--sf);border:1px solid var(--bd);border-radius:18px;padding:40px 30px;width:100%;max-width:380px;animation:up .6s ease-out;text-align:center;box-shadow:var(--shadow)}
 .login-card h2{font-size:18px;margin-bottom:6px}
 .login-card p{font-size:13px;color:var(--td);margin-bottom:24px}
 .code-input{text-align:center;font-family:'JetBrains Mono',monospace;font-size:28px;letter-spacing:12px;padding:16px}
 .login-error{color:var(--r);font-size:13px;margin-top:12px;display:none}
-
 .layout{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:1100px;margin:0 auto;padding:12px 20px;min-height:100vh}
 @media(max-width:800px){.layout{grid-template-columns:1fr;max-width:520px}}
 .header{grid-column:1/-1;display:flex;align-items:center;gap:16px;margin-bottom:8px;animation:up .6s ease-out}
@@ -26,11 +24,9 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--t);min-hei
 .header p{font-size:13px;color:var(--td);margin-top:2px}
 .logout{background:none;border:1px solid var(--bd);border-radius:8px;padding:6px 14px;font-size:12px;color:var(--td);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif}
 .logout:hover{border-color:var(--r);color:var(--r)}
-
 .card{background:var(--sf);border:1px solid var(--bd);border-radius:18px;padding:26px;animation:up .6s ease-out;box-shadow:var(--shadow)}
 @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .sec{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--tl);margin-bottom:20px}
-
 .field{margin-bottom:16px}
 label{display:block;font-size:13px;color:var(--td);margin-bottom:6px}
 input,textarea,select{width:100%;background:var(--bg);border:1.5px solid var(--bd);border-radius:10px;padding:12px 14px;font-family:'Outfit',sans-serif;font-size:15px;color:var(--t);outline:none;transition:border .2s}
@@ -41,7 +37,6 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
 .row{display:flex;gap:8px}
 .row select{width:100px;flex-shrink:0}
 .row input{flex:1}
-
 .btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--g),var(--gd));border:none;border-radius:10px;color:#fff;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;box-shadow:0 4px 16px rgba(37,211,102,.2);position:relative}
 .btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 6px 24px rgba(37,211,102,.3)}
 .btn:disabled{opacity:.5;cursor:wait}
@@ -50,7 +45,6 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
 .btn .spin{display:none;position:absolute;width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:sp .5s linear infinite}
 .btn.loading .spin{display:block}
 @keyframes sp{to{transform:rotate(360deg)}}
-
 .contacts{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
 .contact{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg);border:1px solid var(--bd);border-radius:12px;cursor:pointer;transition:all .2s}
 .contact:hover,.contact.active{border-color:var(--g);background:rgba(37,211,102,.06)}
@@ -65,26 +59,21 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
 .chip{padding:5px 11px;background:var(--bg);border:1px solid var(--bd);border-radius:7px;font-size:12px;color:var(--td);cursor:pointer;transition:all .2s}
 .chip:hover{border-color:var(--g);color:var(--gd);background:rgba(37,211,102,.06)}
-
 .resp{margin-top:12px;padding:10px 14px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12px;display:none;word-break:break-word}
 .resp.ok{display:block;background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.25);color:var(--gd)}
 .resp.err{display:block;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);color:var(--r)}
-
-/* Image paste area */
 .img-area{margin-bottom:16px}
-.img-drop{border:2px dashed var(--bd);border-radius:10px;padding:16px;text-align:center;color:var(--tl);font-size:13px;cursor:pointer;transition:all .2s;position:relative;min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px}
+.img-drop{border:2px dashed var(--bd);border-radius:10px;padding:16px;text-align:center;color:var(--tl);font-size:13px;cursor:pointer;transition:all .2s;min-height:60px;display:flex;align-items:center;justify-content:center;gap:8px}
 .img-drop:hover,.img-drop.dragover{border-color:var(--g);background:rgba(37,211,102,.04);color:var(--gd)}
 .img-drop svg{width:20px;height:20px;fill:currentColor}
 .img-preview{position:relative;display:none;margin-top:10px}
 .img-preview img{max-width:100%;max-height:150px;border-radius:8px;border:1px solid var(--bd)}
 .img-remove{position:absolute;top:-6px;right:-6px;width:22px;height:22px;background:var(--r);border:none;border-radius:50%;color:#fff;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .img-preview .img-name{font-size:11px;color:var(--tl);margin-top:4px;font-family:'JetBrains Mono',monospace}
-
 .hist-panel{display:flex;flex-direction:column;max-height:calc(100vh - 100px)}
 .hist-scroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding-right:4px}
 .hist-scroll::-webkit-scrollbar{width:4px}
 .hist-scroll::-webkit-scrollbar-thumb{background:var(--bd);border-radius:2px}
-
 .msg-card{padding:14px 16px;background:var(--bg);border:1px solid var(--bd);border-radius:12px;animation:up .3s ease-out;position:relative;transition:all .2s}
 .msg-card:hover{border-color:#cdd5d0}
 .msg-card:hover .msg-delete{opacity:1}
@@ -92,33 +81,37 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
 .msg-to{font-size:13px;font-weight:600;color:var(--gd)}
 .msg-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--tl)}
 .msg-text{font-size:13px;color:var(--t);line-height:1.5;margin-bottom:8px;word-break:break-word}
-.msg-img-badge{font-size:11px;color:var(--gd);margin-bottom:6px;font-family:'JetBrains Mono',monospace}
+.msg-img-badge{font-size:11px;color:var(--gd);margin-bottom:6px;font-family:'JetBrains Mono',monospace;cursor:pointer;display:inline-flex;align-items:center;gap:4px;padding:3px 8px;background:rgba(37,211,102,.08);border-radius:6px;border:1px solid rgba(37,211,102,.15);transition:all .2s}
+.msg-img-badge:hover{background:rgba(37,211,102,.15);border-color:var(--g)}
 .msg-footer{display:flex;align-items:center;justify-content:space-between}
 .msg-status{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 8px;border-radius:4px}
 .msg-status.ok{background:rgba(37,211,102,.1);color:var(--gd)}
 .msg-status.fail{background:rgba(239,68,68,.08);color:var(--r)}
 .msg-from{font-size:11px;color:var(--td);font-style:italic}
 .empty-hist{text-align:center;padding:40px 20px;color:var(--tl);font-size:13px}
-
 .msg-delete{position:absolute;top:10px;right:10px;background:var(--sf);border:1px solid rgba(239,68,68,.2);border-radius:6px;width:24px;height:24px;font-size:12px;color:var(--r);cursor:pointer;transition:all .2s;opacity:0;display:flex;align-items:center;justify-content:center;padding:0}
 .msg-delete:hover{background:rgba(239,68,68,.06);border-color:var(--r)}
-
 .sender-bar{display:flex;align-items:center;gap:8px;margin-bottom:20px;padding:10px 14px;background:var(--bg);border:1px solid var(--bd);border-radius:10px}
 .sender-bar label{margin:0;font-size:12px;white-space:nowrap}
 .sender-bar input{border:none;background:none;padding:0;font-size:14px;font-weight:600;color:var(--gd)}
 .sender-bar input:focus{box-shadow:none}
-
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;align-items:center;justify-content:center;cursor:pointer;animation:fadeIn .2s}
+.lightbox.show{display:flex}
+.lightbox img{max-width:90vw;max-height:85vh;border-radius:12px;box-shadow:0 12px 60px rgba(0,0,0,.4)}
+.lightbox-close{position:fixed;top:20px;right:20px;width:40px;height:40px;background:rgba(255,255,255,.9);border:none;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#333;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .toast{position:fixed;bottom:24px;left:50%;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:500;z-index:99;transform:translateX(-50%) translateY(80px);opacity:0;transition:all .3s ease-out;box-shadow:0 6px 30px rgba(0,0,0,.15)}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 .toast.success{background:var(--g);color:#fff}
 .toast.error{background:var(--r);color:#fff}
-
 .hidden{display:none!important}
 </style>
 </head>
 <body>
-
-<!-- LOGIN -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="">
+</div>
 <div id="loginScreen" class="login-wrap">
   <div class="login-card">
     <div class="logo" style="margin:0 auto 20px"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
@@ -126,302 +119,147 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
     <p>Bitte 4-stelligen Code eingeben</p>
     <input type="password" id="codeInput" class="code-input" maxlength="4" placeholder="····" autofocus>
     <div class="login-error" id="loginError"></div>
-    <button class="btn" style="margin-top:20px" onclick="login()">
-      <span class="txt">Anmelden</span><span class="spin"></span>
-    </button>
+    <button class="btn" style="margin-top:20px" onclick="login()"><span class="txt">Anmelden</span><span class="spin"></span></button>
   </div>
 </div>
-
-<!-- APP -->
 <div id="mainApp" class="layout hidden">
   <div class="header">
     <div class="logo"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
-    <div style="flex:1"><h1>Paul WA Sender</h1><p>via TextMeBot · v1.1</p></div>
+    <div style="flex:1"><h1>Paul WA Sender</h1><p>via TextMeBot · v1.2</p></div>
     <button class="logout" onclick="logout()">Abmelden</button>
   </div>
-
-  <!-- LEFT -->
   <div class="card">
     <div class="sec">Nachricht senden</div>
-    <div class="sender-bar">
-      <label>Absender:</label>
-      <input type="text" id="senderName" placeholder="Dein Name">
-    </div>
+    <div class="sender-bar"><label>Absender:</label><input type="text" id="senderName" placeholder="Dein Name"></div>
     <label style="margin-bottom:8px">Empfänger wählen</label>
     <div class="contacts" id="contactList"></div>
     <div class="or-divider">— oder manuell —</div>
-    <div class="field">
-      <label>Nummer eingeben</label>
-      <div class="row">
-        <select id="cc">
-          <option value="+43">+43</option>
-          <option value="+49">+49</option>
-          <option value="+41">+41</option>
-          <option value="+44">+44</option>
-          <option value="+1">+1</option>
-        </select>
-        <input type="tel" id="phone" placeholder="660 1234567">
-      </div>
-    </div>
-    <div class="chips">
-      <span class="chip" data-m="Hallo! Wie geht es dir?">Hallo</span>
-      <span class="chip" data-m="Vielen Dank für Ihre Nachricht!">Danke</span>
-      <span class="chip" data-m="Erinnerung: Unser Termin ist morgen.">Erinnerung</span>
-      <span class="chip" data-m="Ihre Bestellung wurde versandt!">Versand</span>
-    </div>
-
-    <!-- Image paste/drop -->
+    <div class="field"><label>Nummer eingeben</label><div class="row"><select id="cc"><option value="+43">+43</option><option value="+49">+49</option><option value="+41">+41</option><option value="+44">+44</option><option value="+1">+1</option></select><input type="tel" id="phone" placeholder="660 1234567"></div></div>
+    <div class="chips"><span class="chip" data-m="Hallo! Wie geht es dir?">Hallo</span><span class="chip" data-m="Vielen Dank für Ihre Nachricht!">Danke</span><span class="chip" data-m="Erinnerung: Unser Termin ist morgen.">Erinnerung</span><span class="chip" data-m="Ihre Bestellung wurde versandt!">Versand</span></div>
     <div class="img-area">
       <label>Bild (optional)</label>
-      <div class="img-drop" id="imgDrop">
-        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-        Bild einfügen (Strg+V) oder hier klicken
-        <input type="file" id="imgFile" accept="image/*" style="display:none">
-      </div>
-      <div class="img-preview" id="imgPreview">
-        <button class="img-remove" onclick="removeImage()">✕</button>
-        <img id="imgThumb" src="">
-        <div class="img-name" id="imgName"></div>
-      </div>
+      <div class="img-drop" id="imgDrop"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>Bild einfügen (Strg+V) oder hier klicken<input type="file" id="imgFile" accept="image/*" style="display:none"></div>
+      <div class="img-preview" id="imgPreview"><button class="img-remove" onclick="removeImage()">✕</button><img id="imgThumb" src=""><div class="img-name" id="imgName"></div></div>
     </div>
-
-    <div class="field">
-      <label>Nachricht</label>
-      <textarea id="msg" placeholder="Nachricht eingeben..."></textarea>
-    </div>
-    <button class="btn" id="sendBtn" onclick="send()">
-      <span class="txt" style="display:flex;align-items:center;gap:8px">
-        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>Senden
-      </span><span class="spin"></span>
-    </button>
+    <div class="field"><label>Nachricht</label><textarea id="msg" placeholder="Nachricht eingeben..."></textarea></div>
+    <button class="btn" id="sendBtn" onclick="send()"><span class="txt" style="display:flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>Senden</span><span class="spin"></span></button>
     <div class="resp" id="resp"></div>
   </div>
-
-  <!-- RIGHT -->
   <div class="card hist-panel">
     <div class="sec">Nachrichten-Verlauf</div>
-    <div class="hist-scroll" id="histScroll">
-      <div class="empty-hist">Noch keine Nachrichten gesendet</div>
-    </div>
+    <div class="hist-scroll" id="histScroll"><div class="empty-hist">Noch keine Nachrichten gesendet</div></div>
   </div>
 </div>
-
 <div class="toast" id="toast"></div>
-
 <script>
-const CONTACTS = [
-  { name: "Andreas Horvath", phone: "+4369916745215" },
-  { name: "Markus Paul", phone: "+4369916745213" }
-];
-let selectedContact = null;
-let hist = JSON.parse(localStorage.getItem('h3') || '[]');
-let pendingImage = null; // File object
+const CONTACTS=[{name:"Andreas Horvath",phone:"+4369916745215"},{name:"Markus Paul",phone:"+4369916745213"}];
+let selectedContact=null,hist=JSON.parse(localStorage.getItem('h4')||'[]'),pendingImage=null,pendingImageData=null;
 
-// ── Login ──
-function login() {
-  const code = document.getElementById('codeInput').value.trim();
-  const err = document.getElementById('loginError');
-  if (code.length !== 4) { err.style.display = 'block'; err.textContent = 'Bitte 4 Stellen eingeben'; return; }
-  fetch('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ code }) })
-    .then(r => r.json())
-    .then(d => {
-      if (d.ok) { sessionStorage.setItem('auth', '1'); showApp(); }
-      else { err.style.display = 'block'; err.textContent = 'Falscher Code'; document.getElementById('codeInput').value = ''; document.getElementById('codeInput').focus(); }
-    })
-    .catch(() => { err.style.display = 'block'; err.textContent = 'Server nicht erreichbar – bitte 10s warten und nochmal versuchen'; });
+function login(){
+  const code=document.getElementById('codeInput').value.trim(),err=document.getElementById('loginError');
+  if(code.length!==4){err.style.display='block';err.textContent='Bitte 4 Stellen eingeben';return}
+  fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})})
+    .then(r=>r.json()).then(d=>{if(d.ok){sessionStorage.setItem('auth','1');showApp()}else{err.style.display='block';err.textContent='Falscher Code';document.getElementById('codeInput').value='';document.getElementById('codeInput').focus()}})
+    .catch(()=>{err.style.display='block';err.textContent='Server nicht erreichbar – bitte 10s warten'})
 }
-function logout() {
-  sessionStorage.removeItem('auth');
-  document.getElementById('loginScreen').classList.remove('hidden');
-  document.getElementById('mainApp').classList.add('hidden');
-  document.getElementById('codeInput').value = '';
-  document.getElementById('codeInput').focus();
+function logout(){sessionStorage.removeItem('auth');document.getElementById('loginScreen').classList.remove('hidden');document.getElementById('mainApp').classList.add('hidden');document.getElementById('codeInput').value='';document.getElementById('codeInput').focus()}
+function showApp(){document.getElementById('loginScreen').classList.add('hidden');document.getElementById('mainApp').classList.remove('hidden');renderContacts();renderHist();document.getElementById('senderName').value=localStorage.getItem('sender')||''}
+document.getElementById('codeInput').addEventListener('keydown',e=>{if(e.key==='Enter')login()});
+if(sessionStorage.getItem('auth')==='1')showApp();
+document.getElementById('senderName').oninput=function(){localStorage.setItem('sender',this.value)};
+
+// Image
+const imgDrop=document.getElementById('imgDrop'),imgFile=document.getElementById('imgFile'),imgPreview=document.getElementById('imgPreview'),imgThumb=document.getElementById('imgThumb'),imgName=document.getElementById('imgName');
+imgDrop.onclick=()=>imgFile.click();
+imgFile.onchange=e=>{if(e.target.files[0])setImage(e.target.files[0])};
+document.addEventListener('paste',e=>{const items=e.clipboardData?.items;if(!items)return;for(let i=0;i<items.length;i++){if(items[i].type.startsWith('image/')){e.preventDefault();setImage(items[i].getAsFile());return}}});
+imgDrop.addEventListener('dragover',e=>{e.preventDefault();imgDrop.classList.add('dragover')});
+imgDrop.addEventListener('dragleave',()=>imgDrop.classList.remove('dragover'));
+imgDrop.addEventListener('drop',e=>{e.preventDefault();imgDrop.classList.remove('dragover');if(e.dataTransfer.files[0]?.type.startsWith('image/'))setImage(e.dataTransfer.files[0])});
+
+function setImage(file){
+  pendingImage=file;
+  imgThumb.src=URL.createObjectURL(file);
+  imgName.textContent=file.name+' ('+(file.size/1024).toFixed(0)+' KB)';
+  imgPreview.style.display='block';imgDrop.style.display='none';
+  const reader=new FileReader();
+  reader.onload=function(e){
+    const img=new Image();
+    img.onload=function(){
+      const canvas=document.createElement('canvas'),maxW=300,scale=Math.min(1,maxW/img.width);
+      canvas.width=img.width*scale;canvas.height=img.height*scale;
+      canvas.getContext('2d').drawImage(img,0,0,canvas.width,canvas.height);
+      pendingImageData=canvas.toDataURL('image/jpeg',0.7);
+    };img.src=e.target.result;
+  };reader.readAsDataURL(file);
 }
-function showApp() {
-  document.getElementById('loginScreen').classList.add('hidden');
-  document.getElementById('mainApp').classList.remove('hidden');
-  renderContacts(); renderHist();
-  document.getElementById('senderName').value = localStorage.getItem('sender') || '';
-}
-document.getElementById('codeInput').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
-if (sessionStorage.getItem('auth') === '1') showApp();
-document.getElementById('senderName').oninput = function() { localStorage.setItem('sender', this.value); };
+function removeImage(){pendingImage=null;pendingImageData=null;imgThumb.src='';imgPreview.style.display='none';imgDrop.style.display='flex';imgFile.value=''}
 
-// ── Image handling ──
-const imgDrop = document.getElementById('imgDrop');
-const imgFile = document.getElementById('imgFile');
-const imgPreview = document.getElementById('imgPreview');
-const imgThumb = document.getElementById('imgThumb');
-const imgName = document.getElementById('imgName');
+// Lightbox
+function showLightbox(idx){document.getElementById('lightboxImg').src=hist[idx].imgData;document.getElementById('lightbox').classList.add('show')}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('show')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
 
-imgDrop.onclick = () => imgFile.click();
-imgFile.onchange = (e) => { if (e.target.files[0]) setImage(e.target.files[0]); };
-
-// Paste from clipboard
-document.addEventListener('paste', (e) => {
-  const items = e.clipboardData?.items;
-  if (!items) return;
-  for (let i = 0; i < items.length; i++) {
-    if (items[i].type.startsWith('image/')) {
-      e.preventDefault();
-      setImage(items[i].getAsFile());
-      return;
-    }
-  }
-});
-
-// Drag & drop
-imgDrop.addEventListener('dragover', (e) => { e.preventDefault(); imgDrop.classList.add('dragover'); });
-imgDrop.addEventListener('dragleave', () => imgDrop.classList.remove('dragover'));
-imgDrop.addEventListener('drop', (e) => {
-  e.preventDefault(); imgDrop.classList.remove('dragover');
-  if (e.dataTransfer.files[0]?.type.startsWith('image/')) setImage(e.dataTransfer.files[0]);
-});
-
-function setImage(file) {
-  pendingImage = file;
-  imgThumb.src = URL.createObjectURL(file);
-  imgName.textContent = file.name + ' (' + (file.size / 1024).toFixed(0) + ' KB)';
-  imgPreview.style.display = 'block';
-  imgDrop.style.display = 'none';
-}
-
-function removeImage() {
-  pendingImage = null;
-  imgThumb.src = '';
-  imgPreview.style.display = 'none';
-  imgDrop.style.display = 'flex';
-  imgFile.value = '';
-}
-
-// ── Contacts ──
-function renderContacts() {
-  document.getElementById('contactList').innerHTML = CONTACTS.map((c, i) => {
-    const ini = c.name.split(' ').map(w => w[0]).join('');
-    return '<div class="contact" onclick="selectContact(' + i + ')"><div class="contact-avatar">' + ini + '</div><div class="contact-info"><div class="contact-name">' + esc(c.name) + '</div><div class="contact-num">' + esc(c.phone) + '</div></div><div class="contact-check"></div></div>';
+// Contacts
+function renderContacts(){
+  document.getElementById('contactList').innerHTML=CONTACTS.map((c,i)=>{
+    const ini=c.name.split(' ').map(w=>w[0]).join('');
+    return'<div class="contact" onclick="selectContact('+i+')"><div class="contact-avatar">'+ini+'</div><div class="contact-info"><div class="contact-name">'+esc(c.name)+'</div><div class="contact-num">'+esc(c.phone)+'</div></div><div class="contact-check"></div></div>'
   }).join('');
 }
-function selectContact(i) {
-  selectedContact = selectedContact === i ? null : i;
-  document.getElementById('phone').value = '';
-  document.querySelectorAll('.contact').forEach((el, idx) => {
-    el.classList.toggle('active', idx === selectedContact);
-    el.querySelector('.contact-check').textContent = idx === selectedContact ? '✓' : '';
-  });
+function selectContact(i){
+  selectedContact=selectedContact===i?null:i;document.getElementById('phone').value='';
+  document.querySelectorAll('.contact').forEach((el,idx)=>{el.classList.toggle('active',idx===selectedContact);el.querySelector('.contact-check').textContent=idx===selectedContact?'✓':''});
 }
-document.querySelectorAll('.chip').forEach(c => c.onclick = () => { document.getElementById('msg').value = c.dataset.m; document.getElementById('msg').focus(); });
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{document.getElementById('msg').value=c.dataset.m;document.getElementById('msg').focus()});
 
-// ── Send ──
-async function send() {
-  const msg = document.getElementById('msg').value.trim();
-  const sender = document.getElementById('senderName').value.trim() || 'Unbekannt';
-  if (!msg) return toast('Nachricht eingeben', 'error');
-  let fullNumber = '', displayName = '';
-  if (selectedContact !== null) {
-    fullNumber = CONTACTS[selectedContact].phone;
-    displayName = CONTACTS[selectedContact].name;
-  } else {
-    const pre = document.getElementById('cc').value;
-    const ph = document.getElementById('phone').value.trim();
-    if (!ph) return toast('Kontakt wählen oder Nummer eingeben', 'error');
-    let n = ph.replace(/[^0-9]/g, ''); if (n.startsWith('0')) n = n.slice(1);
-    fullNumber = pre + n; displayName = fullNumber;
-  }
-
-  const btn = document.getElementById('sendBtn');
-  const resp = document.getElementById('resp');
-  btn.classList.add('loading'); btn.disabled = true;
-  resp.className = 'resp'; resp.style.display = 'none';
-
-  let imageUrl = '';
-  const hasImage = !!pendingImage;
-
-  try {
-    // Bild hochladen wenn vorhanden
-    if (pendingImage) {
-      const fd = new FormData();
-      fd.append('image', pendingImage);
-      const upRes = await fetch('/api/upload', { method: 'POST', body: fd });
-      const upData = await upRes.json();
-      if (upData.ok) {
-        imageUrl = upData.url;
-      } else {
-        resp.textContent = 'Bild-Upload fehlgeschlagen: ' + upData.msg;
-        resp.className = 'resp err';
-        btn.classList.remove('loading'); btn.disabled = false;
-        return;
-      }
-    }
-
-    // Nachricht senden
-    let url = '/api/send?recipient=' + encodeURIComponent(fullNumber) + '&text=' + encodeURIComponent(msg);
-    if (imageUrl) url += '&file=' + encodeURIComponent(imageUrl);
-
-    const r = await fetch(url);
-    const d = await r.json();
-    resp.textContent = 'API Antwort: ' + d.msg;
-
-    if (d.ok) {
-      resp.className = 'resp ok';
-      toast('Gesendet an ' + displayName + '!', 'success');
-      addHist(displayName, fullNumber, msg, 'ok', sender, hasImage);
-      document.getElementById('msg').value = '';
-      removeImage();
-    } else {
-      resp.className = 'resp err';
-      toast('Fehler: ' + d.msg, 'error');
-      addHist(displayName, fullNumber, msg, 'fail', sender, hasImage);
-    }
-  } catch (e) {
-    resp.textContent = 'Netzwerk-Fehler: ' + e.message;
-    resp.className = 'resp err';
-    toast('Server nicht erreichbar', 'error');
-  } finally {
-    btn.classList.remove('loading'); btn.disabled = false;
-  }
+// Send
+async function send(){
+  const msg=document.getElementById('msg').value.trim(),sender=document.getElementById('senderName').value.trim()||'Unbekannt';
+  if(!msg)return toast('Nachricht eingeben','error');
+  let fullNumber='',displayName='';
+  if(selectedContact!==null){fullNumber=CONTACTS[selectedContact].phone;displayName=CONTACTS[selectedContact].name}
+  else{const pre=document.getElementById('cc').value,ph=document.getElementById('phone').value.trim();if(!ph)return toast('Kontakt wählen oder Nummer eingeben','error');let n=ph.replace(/[^0-9]/g,'');if(n.startsWith('0'))n=n.slice(1);fullNumber=pre+n;displayName=fullNumber}
+  const btn=document.getElementById('sendBtn'),resp=document.getElementById('resp');
+  btn.classList.add('loading');btn.disabled=true;resp.className='resp';resp.style.display='none';
+  let imageUrl='';const hasImage=!!pendingImage,savedImageData=pendingImageData||null;
+  try{
+    if(pendingImage){const fd=new FormData();fd.append('image',pendingImage);const upRes=await fetch('/api/upload',{method:'POST',body:fd});const upData=await upRes.json();if(upData.ok){imageUrl=upData.url}else{resp.textContent='Bild-Upload fehlgeschlagen: '+upData.msg;resp.className='resp err';btn.classList.remove('loading');btn.disabled=false;return}}
+    let url='/api/send?recipient='+encodeURIComponent(fullNumber)+'&text='+encodeURIComponent(msg);
+    if(imageUrl)url+='&file='+encodeURIComponent(imageUrl);
+    const r=await fetch(url),d=await r.json();resp.textContent='API Antwort: '+d.msg;
+    if(d.ok){resp.className='resp ok';toast('Gesendet an '+displayName+'!','success');addHist(displayName,fullNumber,msg,'ok',sender,savedImageData);document.getElementById('msg').value='';removeImage()}
+    else{resp.className='resp err';toast('Fehler: '+d.msg,'error');addHist(displayName,fullNumber,msg,'fail',sender,savedImageData)}
+  }catch(e){resp.textContent='Netzwerk-Fehler: '+e.message;resp.className='resp err';toast('Server nicht erreichbar','error')}
+  finally{btn.classList.remove('loading');btn.disabled=false}
 }
 
-// ── Delete ──
-function deleteMsg(idx) {
-  if (!confirm('Diese Nachricht löschen?')) return;
-  hist.splice(idx, 1);
-  localStorage.setItem('h3', JSON.stringify(hist));
-  renderHist();
-  toast('Gelöscht', 'success');
-}
+function deleteMsg(idx){if(!confirm('Diese Nachricht löschen?'))return;hist.splice(idx,1);localStorage.setItem('h4',JSON.stringify(hist));renderHist();toast('Gelöscht','success')}
 
-// ── History ──
-function addHist(name, to, msg, st, sender, hasImage) {
-  hist.unshift({ name, to, msg, st, sender, img: hasImage || false, t: new Date().toISOString() });
-  if (hist.length > 50) hist = hist.slice(0, 50);
-  localStorage.setItem('h3', JSON.stringify(hist));
+function addHist(name,to,msg,st,sender,imgData){
+  hist.unshift({name,to,msg,st,sender,imgData:imgData||null,t:new Date().toISOString()});
+  if(hist.length>50)hist=hist.slice(0,50);
+  try{localStorage.setItem('h4',JSON.stringify(hist))}
+  catch(e){for(let i=hist.length-1;i>0;i--){if(hist[i].imgData){hist[i].imgData=null;try{localStorage.setItem('h4',JSON.stringify(hist));break}catch(e2){}}}}
   renderHist();
 }
-function renderHist() {
-  const scroll = document.getElementById('histScroll');
-  if (!hist.length) {
-    scroll.innerHTML = '<div class="empty-hist">Noch keine Nachrichten gesendet</div>';
-    return;
-  }
-  scroll.innerHTML = hist.map((h, idx) => {
-    const t = new Date(h.t);
-    const ts = t.toLocaleTimeString('de', { hour: '2-digit', minute: '2-digit' });
-    const ds = t.toLocaleDateString('de', { day: '2-digit', month: '2-digit', year: 'numeric' });
-    const imgBadge = h.img ? '<div class="msg-img-badge">📎 Mit Bild</div>' : '';
-    return '<div class="msg-card">' +
-      '<button class="msg-delete" onclick="deleteMsg(' + idx + ')" title="Löschen">✕</button>' +
-      '<div class="msg-header"><div class="msg-to">→ ' + esc(h.name || h.to) + '</div><div class="msg-time">' + ds + ' · ' + ts + '</div></div>' +
-      imgBadge +
-      '<div class="msg-text">' + esc(h.msg) + '</div>' +
-      '<div class="msg-footer"><span class="msg-status ' + (h.st === 'ok' ? 'ok' : 'fail') + '">' + (h.st === 'ok' ? '✓ Gesendet' : '✗ Fehler') + '</span><span class="msg-from">von ' + esc(h.sender || 'Unbekannt') + '</span></div></div>';
+
+function renderHist(){
+  const scroll=document.getElementById('histScroll');
+  if(!hist.length){scroll.innerHTML='<div class="empty-hist">Noch keine Nachrichten gesendet</div>';return}
+  scroll.innerHTML=hist.map((h,idx)=>{
+    const t=new Date(h.t),ts=t.toLocaleTimeString('de',{hour:'2-digit',minute:'2-digit'}),ds=t.toLocaleDateString('de',{day:'2-digit',month:'2-digit',year:'numeric'});
+    let imgBadge='';
+    if(h.imgData)imgBadge='<div class="msg-img-badge" onclick="showLightbox('+idx+')">📎 Bild anzeigen</div>';
+    return'<div class="msg-card"><button class="msg-delete" onclick="deleteMsg('+idx+')" title="Löschen">✕</button><div class="msg-header"><div class="msg-to">→ '+esc(h.name||h.to)+'</div><div class="msg-time">'+ds+' · '+ts+'</div></div>'+imgBadge+'<div class="msg-text">'+esc(h.msg)+'</div><div class="msg-footer"><span class="msg-status '+(h.st==='ok'?'ok':'fail')+'">'+(h.st==='ok'?'✓ Gesendet':'✗ Fehler')+'</span><span class="msg-from">von '+esc(h.sender||'Unbekannt')+'</span></div></div>'
   }).join('');
 }
 
-function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
-function toast(m, ty) { const t = document.getElementById('toast'); t.textContent = m; t.className = 'toast ' + ty + ' show'; setTimeout(() => t.classList.remove('show'), 3000); }
-document.getElementById('phone').onkeydown = e => { if (e.key === 'Enter') document.getElementById('msg').focus(); };
-document.getElementById('msg').onkeydown = e => { if (e.key === 'Enter' && e.ctrlKey) send(); };
-document.getElementById('phone').oninput = () => { if (document.getElementById('phone').value.trim()) { selectedContact = null; document.querySelectorAll('.contact').forEach(el => { el.classList.remove('active'); el.querySelector('.contact-check').textContent = ''; }); } };
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function toast(m,ty){const t=document.getElementById('toast');t.textContent=m;t.className='toast '+ty+' show';setTimeout(()=>t.classList.remove('show'),3000)}
+document.getElementById('phone').onkeydown=e=>{if(e.key==='Enter')document.getElementById('msg').focus()};
+document.getElementById('msg').onkeydown=e=>{if(e.key==='Enter'&&e.ctrlKey)send()};
+document.getElementById('phone').oninput=()=>{if(document.getElementById('phone').value.trim()){selectedContact=null;document.querySelectorAll('.contact').forEach(el=>{el.classList.remove('active');el.querySelector('.contact-check').textContent=''})}};
 </script>
 </body>
 </html>
