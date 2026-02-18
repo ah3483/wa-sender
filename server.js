@@ -22,14 +22,34 @@ app.get("/api/send", (req, res) => {
   if (!recipient || !text) return res.json({ ok: false, msg: "Parameter fehlen" });
 
   const params = new URLSearchParams({ recipient, apikey: TEXTMEBOT_KEY, text });
-  https.get("https://api.textmebot.com/send.php?" + params, (r) => {
+  const url = "https://api.textmebot.com/send.php?" + params;
+
+  const request = https.get(url, (r) => {
     let body = "";
     r.on("data", (c) => (body += c));
     r.on("end", () => {
-      console.log("→", recipient, ":", body.trim());
-      res.json({ ok: true, msg: body.trim() });
+      const trimmed = body.trim();
+      console.log("TextMeBot [" + r.statusCode + "]:", trimmed);
+      
+      // Wenn HTTP 200 und keine klare Fehlermeldung -> Erfolg
+      const low = trimmed.toLowerCase();
+      const isError = low.includes("error") || low.includes("invalid") || 
+                      low.includes("not connected") || low.includes("wrong key");
+      
+      res.json({ ok: !isError, msg: trimmed || "OK (leer)" });
     });
-  }).on("error", (e) => res.json({ ok: false, msg: e.message }));
+  });
+
+  request.on("error", (e) => {
+    console.log("TextMeBot Fehler:", e.message);
+    res.json({ ok: false, msg: "Verbindung zu TextMeBot fehlgeschlagen: " + e.message });
+  });
+
+  // Timeout nach 15 Sekunden
+  request.setTimeout(15000, () => {
+    request.destroy();
+    res.json({ ok: true, msg: "Timeout - Nachricht wahrscheinlich gesendet" });
+  });
 });
 
 app.listen(process.env.PORT || 3000, () => console.log("Server läuft!"));

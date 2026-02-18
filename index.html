@@ -24,7 +24,6 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--t);min-hei
 .logo svg{width:26px;height:26px;fill:#fff}
 .header h1{font-size:20px;font-weight:700}
 .header p{font-size:13px;color:var(--td);margin-top:2px}
-.header-actions{display:flex;gap:8px}
 .logout{background:none;border:1px solid var(--bd);border-radius:8px;padding:6px 14px;font-size:12px;color:var(--td);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif}
 .logout:hover{border-color:var(--r);color:var(--r)}
 
@@ -67,7 +66,7 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
 .chip{padding:5px 11px;background:var(--bg);border:1px solid var(--bd);border-radius:7px;font-size:12px;color:var(--td);cursor:pointer;transition:all .2s}
 .chip:hover{border-color:var(--g);color:var(--gd);background:rgba(37,211,102,.06)}
 
-.resp{margin-top:12px;padding:10px 14px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12px;display:none}
+.resp{margin-top:12px;padding:10px 14px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12px;display:none;word-break:break-word}
 .resp.ok{display:block;background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.25);color:var(--gd)}
 .resp.err{display:block;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);color:var(--r)}
 
@@ -79,7 +78,7 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
 .msg-card{padding:14px 16px;background:var(--bg);border:1px solid var(--bd);border-radius:12px;animation:up .3s ease-out;position:relative;transition:all .2s}
 .msg-card:hover{border-color:#cdd5d0}
 .msg-card:hover .msg-delete{opacity:1}
-.msg-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.msg-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;padding-right:28px}
 .msg-to{font-size:13px;font-weight:600;color:var(--gd)}
 .msg-time{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--tl)}
 .msg-text{font-size:13px;color:var(--t);line-height:1.5;margin-bottom:8px;word-break:break-word}
@@ -90,7 +89,7 @@ input::placeholder,textarea::placeholder{color:var(--tl)}
 .msg-from{font-size:11px;color:var(--td);font-style:italic}
 .empty-hist{text-align:center;padding:40px 20px;color:var(--tl);font-size:13px}
 
-.msg-delete{position:absolute;top:10px;right:10px;background:var(--sf);border:1px solid rgba(239,68,68,.2);border-radius:6px;padding:3px 8px;font-size:11px;color:var(--r);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;opacity:0}
+.msg-delete{position:absolute;top:10px;right:10px;background:var(--sf);border:1px solid rgba(239,68,68,.2);border-radius:6px;width:24px;height:24px;font-size:12px;color:var(--r);cursor:pointer;transition:all .2s;opacity:0;display:flex;align-items:center;justify-content:center;padding:0}
 .msg-delete:hover{background:rgba(239,68,68,.06);border-color:var(--r)}
 
 .sender-bar{display:flex;align-items:center;gap:8px;margin-bottom:20px;padding:10px 14px;background:var(--bg);border:1px solid var(--bd);border-radius:10px}
@@ -188,7 +187,7 @@ const CONTACTS = [
   { name: "Markus Paul", phone: "+4369916745213" }
 ];
 let selectedContact = null;
-let hist = JSON.parse(localStorage.getItem('h2') || '[]');
+let hist = JSON.parse(localStorage.getItem('h3') || '[]');
 
 // ── Login ──
 function login() {
@@ -201,7 +200,7 @@ function login() {
       if (d.ok) { sessionStorage.setItem('auth', '1'); showApp(); }
       else { err.style.display = 'block'; err.textContent = 'Falscher Code'; document.getElementById('codeInput').value = ''; document.getElementById('codeInput').focus(); }
     })
-    .catch(() => { err.style.display = 'block'; err.textContent = 'Server nicht erreichbar'; });
+    .catch(() => { err.style.display = 'block'; err.textContent = 'Server nicht erreichbar – bitte 10s warten und nochmal versuchen'; });
 }
 function logout() {
   sessionStorage.removeItem('auth');
@@ -254,27 +253,41 @@ async function send() {
     let n = ph.replace(/[^0-9]/g, ''); if (n.startsWith('0')) n = n.slice(1);
     fullNumber = pre + n; displayName = fullNumber;
   }
-  const btn = document.getElementById('sendBtn'), resp = document.getElementById('resp');
-  btn.classList.add('loading'); btn.disabled = true; resp.className = 'resp';
+  const btn = document.getElementById('sendBtn');
+  const resp = document.getElementById('resp');
+  btn.classList.add('loading'); btn.disabled = true;
+  resp.className = 'resp'; resp.style.display = 'none';
+
   try {
     const r = await fetch('/api/send?recipient=' + encodeURIComponent(fullNumber) + '&text=' + encodeURIComponent(msg));
     const d = await r.json();
-    resp.textContent = 'API: ' + d.msg;
-    const low = (d.msg || '').toLowerCase();
-    //if (low.includes('sent') || low.includes('queued') || low.includes('success')) {
-    if (!low.includes('error') && !low.includes('invalid') && !low.includes('fail') && !low.includes('wrong') && !low.includes('not connected')) {
-      resp.className = 'resp ok'; toast('Gesendet an ' + displayName + '!', 'success');
-      addHist(displayName, fullNumber, msg, 'ok', sender); document.getElementById('msg').value = '';
-    } else { resp.className = 'resp err'; toast('Fehler: ' + d.msg, 'error'); addHist(displayName, fullNumber, msg, 'fail', sender); }
-  } catch (e) { resp.textContent = 'Server-Fehler'; resp.className = 'resp err'; toast('Verbindung fehlgeschlagen', 'error'); }
-  finally { btn.classList.remove('loading'); btn.disabled = false; }
+
+    resp.textContent = 'API Antwort: ' + d.msg;
+
+    if (d.ok) {
+      resp.className = 'resp ok';
+      toast('Gesendet an ' + displayName + '!', 'success');
+      addHist(displayName, fullNumber, msg, 'ok', sender);
+      document.getElementById('msg').value = '';
+    } else {
+      resp.className = 'resp err';
+      toast('Fehler: ' + d.msg, 'error');
+      addHist(displayName, fullNumber, msg, 'fail', sender);
+    }
+  } catch (e) {
+    resp.textContent = 'Netzwerk-Fehler: ' + e.message;
+    resp.className = 'resp err';
+    toast('Server nicht erreichbar', 'error');
+  } finally {
+    btn.classList.remove('loading'); btn.disabled = false;
+  }
 }
 
 // ── Delete ──
 function deleteMsg(idx) {
   if (!confirm('Diese Nachricht löschen?')) return;
   hist.splice(idx, 1);
-  localStorage.setItem('h2', JSON.stringify(hist));
+  localStorage.setItem('h3', JSON.stringify(hist));
   renderHist();
   toast('Gelöscht', 'success');
 }
@@ -283,19 +296,24 @@ function deleteMsg(idx) {
 function addHist(name, to, msg, st, sender) {
   hist.unshift({ name, to, msg, st, sender, t: new Date().toISOString() });
   if (hist.length > 50) hist = hist.slice(0, 50);
-  localStorage.setItem('h2', JSON.stringify(hist));
+  localStorage.setItem('h3', JSON.stringify(hist));
   renderHist();
 }
 function renderHist() {
-  const scroll = document.getElementById('histScroll'), empty = document.getElementById('emptyHist');
-  if (!hist.length) { scroll.innerHTML = ''; scroll.appendChild(empty); empty.style.display = 'block'; return; }
-  empty.style.display = 'none';
+  const scroll = document.getElementById('histScroll');
+  const empty = document.getElementById('emptyHist');
+
+  if (!hist.length) {
+    scroll.innerHTML = '<div class="empty-hist">Noch keine Nachrichten gesendet</div>';
+    return;
+  }
+
   scroll.innerHTML = hist.map((h, idx) => {
     const t = new Date(h.t);
     const ts = t.toLocaleTimeString('de', { hour: '2-digit', minute: '2-digit' });
     const ds = t.toLocaleDateString('de', { day: '2-digit', month: '2-digit', year: 'numeric' });
     return '<div class="msg-card">' +
-      '<button class="msg-delete" onclick="deleteMsg(' + idx + ')">✕</button>' +
+      '<button class="msg-delete" onclick="deleteMsg(' + idx + ')" title="Löschen">✕</button>' +
       '<div class="msg-header"><div class="msg-to">→ ' + esc(h.name || h.to) + '</div><div class="msg-time">' + ds + ' · ' + ts + '</div></div>' +
       '<div class="msg-text">' + esc(h.msg) + '</div>' +
       '<div class="msg-footer"><span class="msg-status ' + (h.st === 'ok' ? 'ok' : 'fail') + '">' + (h.st === 'ok' ? '✓ Gesendet' : '✗ Fehler') + '</span><span class="msg-from">von ' + esc(h.sender || 'Unbekannt') + '</span></div></div>';
